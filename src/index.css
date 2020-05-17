@@ -1,26 +1,80 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #282c34;
+  color: #fff;
 }
 
 * {
   padding: 0;
   margin: 0;
   list-style: none;
-}
-
-ul {
-  margin-bottom: 10px;
-}
-
-ul li {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 5px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  outline: none;
 }
 
 .App {
-  margin: 20px;
+  margin: 10px auto;
+  padding: 20px;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.counter h3 {
+  margin-left: 10px;
+}
+
+.tasksList {
+  border: 1px solid #383c45;
+  border-radius: 10px;
+  padding: 20px 30px 40px;
+}
+
+.Tasks {
+  display: flex;
+  justify-content: space-between;
+  width: 35%;
+}
+
+button {
+  border: 1px solid #383c45;
+  background-color: #282c34;
+  color: #fff;
+  font-size: 18px;
+  padding: 7px;
+  cursor: pointer;
+  border-radius: 6px;
+  min-width: 50px;
+  margin-right: 5px;
+}
+
+.Tasks input {
+  padding: 7px;
+  font-size: 16px;
+  border: 0;
+  color: #fff;
+  background-color: #383c45;
+  border-radius: 6px;
+}
+
+.Tasks h2 {
+  font-size: 38px;
+}
+
+.Tasks li {
+  font-size: 22px;
+}
+
+ul li {
+  margin-top: 5px;
+}
+
+.cyan {
+  color: #61dafb;
 }

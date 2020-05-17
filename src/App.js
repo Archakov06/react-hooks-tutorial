@@ -1,79 +1,26 @@
 import React from 'react';
-
-import Hello from './Hello';
-
-function reducer(state, action) {
-  switch (action.type) {
-    case 'ADD_NUMBER':
-      return {
-        ...state,
-        numbers: [...state.numbers, action.payload],
-      };
-    case 'TOGGLE_VISIBLE_HELLO':
-      return {
-        ...state,
-        showHello: false,
-      };
-    default:
-      return state;
-  }
-}
-
-function init(state) {
-  return {
-    ...state,
-    numbers: [5, 5, 5],
-  };
-}
+import Count from './components/Count';
+import IsFive from './components/IsFive';
 
 function App() {
-  const [state, dispatch] = React.useReducer(
-    reducer,
-    {
-      showHello: true,
-      numbers: [1, 2, 3],
-    },
-    init,
-  );
-
-  const inputRef = React.useRef(null);
-  const words = React.useRef(['hello', 'world']);
-
-  const addNumber = () => {
-    const randNumber = Math.round(Math.random() * 10);
-    dispatch({
-      type: 'ADD_NUMBER',
-      payload: randNumber,
-    });
-  };
-
-  const setFocus = () => {
-    inputRef.current.focus();
-    console.log(words);
-  };
+  const [count1, setCount1] = React.useState(0);
+  const [count2, setCount2] = React.useState(0);
 
   return (
     <div className="App">
-      {state.showHello && <Hello />}
-      <button
-        onClick={() => {
-          dispatch({
-            type: 'TOGGLE_VISIBLE_HELLO',
-          });
-        }}>
-        Скрыть/Показать Hello
-      </button>
-      <ul>
-        {state.numbers.map((num, index) => (
-          <li key={index}>{num}</li>
-        ))}
-      </ul>
-      <button onClick={addNumber}>Новое число</button>
-      <br />
-      <br />
-      <hr />
-      <input ref={inputRef} type="text" placeholder="Логин" />
-      <button onClick={setFocus}>Фокус на инпут</button>
+      
+      <h5>Счетчик 1: </h5>
+      <div className="counter">
+        <button onClick={() => setCount1(count1 + 1)}>+</button>
+        <Count id={1} value={count1} />
+      </div>
+
+      <h5>Счетчик 2: </h5>
+      <div className="counter">
+        <button onClick={() => setCount2(count2 + 1)}>+</button>
+        <Count id={2} value={count2} />
+        <IsFive value={count2} />
+      </div>
     </div>
   );
 }
