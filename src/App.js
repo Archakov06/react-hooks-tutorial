@@ -1,79 +1,23 @@
 import React from 'react';
 
-import Hello from './Hello';
-
-function reducer(state, action) {
-  switch (action.type) {
-    case 'ADD_NUMBER':
-      return {
-        ...state,
-        numbers: [...state.numbers, action.payload],
-      };
-    case 'TOGGLE_VISIBLE_HELLO':
-      return {
-        ...state,
-        showHello: false,
-      };
-    default:
-      return state;
-  }
-}
-
-function init(state) {
-  return {
-    ...state,
-    numbers: [5, 5, 5],
-  };
-}
-
 function App() {
-  const [state, dispatch] = React.useReducer(
-    reducer,
-    {
-      showHello: true,
-      numbers: [1, 2, 3],
-    },
-    init,
-  );
+  const [count, setCounter] = React.useState(0);
 
-  const inputRef = React.useRef(null);
-  const words = React.useRef(['hello', 'world']);
+  const isFive = React.useMemo(() => {
+    let i = 0;
+    while (i < 2000000000) i++;
+    console.log('Очень сложное вычисление ' + i);
+    return Math.random();
+  }, [count]);
 
-  const addNumber = () => {
-    const randNumber = Math.round(Math.random() * 10);
-    dispatch({
-      type: 'ADD_NUMBER',
-      payload: randNumber,
-    });
-  };
-
-  const setFocus = () => {
-    inputRef.current.focus();
-    console.log(words);
-  };
+  console.log('render');
 
   return (
     <div className="App">
-      {state.showHello && <Hello />}
-      <button
-        onClick={() => {
-          dispatch({
-            type: 'TOGGLE_VISIBLE_HELLO',
-          });
-        }}>
-        Скрыть/Показать Hello
-      </button>
-      <ul>
-        {state.numbers.map((num, index) => (
-          <li key={index}>{num}</li>
-        ))}
-      </ul>
-      <button onClick={addNumber}>Новое число</button>
-      <br />
-      <br />
-      <hr />
-      <input ref={inputRef} type="text" placeholder="Логин" />
-      <button onClick={setFocus}>Фокус на инпут</button>
+      <h4>{count}</h4>
+      <h4>{isFive}</h4>
+      <button onClick={() => setCounter(count + 1)}>+</button>
+      <button onClick={() => setCounter(5)}>5</button>
     </div>
   );
 }
