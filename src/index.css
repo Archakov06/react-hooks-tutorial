@@ -4,6 +4,7 @@ body {
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 20px;
 }
 
 * {
@@ -13,14 +14,25 @@ body {
 }
 
 ul {
-  margin-bottom: 10px;
+  height: 200px;
+  overflow: auto;
+  border: 1px solid rgb(211, 211, 211);
 }
 
 ul li {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 5px;
+  padding: 20px;
 }
 
-.App {
-  margin: 20px;
+ul li:not(:last-of-type) {
+  border-bottom: 1px solid rgb(211, 211, 211);
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+}
+
+h5 {
+  margin-top: 15px;
 }
