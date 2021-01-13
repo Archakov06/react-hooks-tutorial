@@ -14,8 +14,8 @@ export default React.memo(
 
     return <h3>{getResult}</h3>;
   },
-  (prevProps, nextPropx) => {
-    if (nextPropx.value === 5) {
+  (prevProps, nextProps) => {
+    if (nextProps.value === 5 || prevProps.value === 5) {
       return false;
     } else {
       return true;
